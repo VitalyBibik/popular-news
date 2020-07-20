@@ -26,9 +26,11 @@ module.exports.login = async (req, res, next) => {
     const userlogin = await User.findUserByCredentials(email, password);
     const token = jwt.sign({ _id: userlogin._id }, JWT_SECRET || 'dev-secret',
       { expiresIn: '7d' });
+
     res.cookie('jwt', token, {
       maxAge: 3600000 * 24 * 7,
-      httpOnly: true,
+      httpOnly: false,
+      domain:'backend-mesto.xyz'
     });
     return res.send({ token });
   } catch (err) {
