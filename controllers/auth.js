@@ -30,10 +30,20 @@ module.exports.login = async (req, res, next) => {
     res.cookie('jwt', token, {
       maxAge: 3600000 * 24 * 7,
       httpOnly: true,
-      domain:'backend-mesto.xyz'
+      credentials: 'include',
     });
     return res.send({ token });
   } catch (err) {
     return next(err);
+  }
+};
+module.exports.logout = async (req, res, next) => {
+  try {
+    res.cookie('jwt', '', {
+      maxAge: 0,
+      httpOnly: true,
+    }).send({ message: 'Вы вышли из системы' });
+  } catch (e) {
+    return next();
   }
 };

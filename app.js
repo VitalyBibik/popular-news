@@ -19,7 +19,7 @@ const { limiter } = require('./middleware/limiter');
 const corsOptions = {
   origin:['https://backend-mesto.xyz','http://localhost:8080'],
   methods:['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-  preflightContinue: true,
+  preflightContinue: false,
   optionsSuccessStatus: 204,
   allowedHeaders:['Content-Type', 'x-requested-with', 'origin', 'accept', 'x-access-token', 'Authorization'],
   credentials: true
