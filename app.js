@@ -17,7 +17,7 @@ const routes = require('./routes/index');
 const { limiter } = require('./middleware/limiter');
 
 const corsOptions = {
-  origin:['https://backend-mesto.xyz','http://localhost:8080', 'https://vitalybibik.github.io/popular-news/'],
+  origin:['https://backend-mesto.xyz','http://localhost:8080', 'https://vitalybibik.github.io'],
   methods:['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
   optionsSuccessStatus: 204,
