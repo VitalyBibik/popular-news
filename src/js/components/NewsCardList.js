@@ -23,8 +23,8 @@ class NewsCardList {
     this._clearListCard();
     this.items = [];
     this.items.push(array);
-    this._showMoreArticles();
     this.mainApi.getUserData().then((data) => {
+      console.log(data,'Проверка данных');
       if (data !== undefined) {
         this.statusLogin = 1;
         this._showMoreArticles();
@@ -32,6 +32,9 @@ class NewsCardList {
         this.statusLogin = 0;
         this._showMoreArticles();
       }
+    }).catch((e) => {
+      console.log(e);
+      this._showMoreArticles();
     })
   }
   initCardListKeyWord = (word) => {
