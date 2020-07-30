@@ -7,7 +7,7 @@ class AnalyticsMyNews {
     this.countArticle = 0;
     this.keywordsArray = [];
   }
-  _getUserInfo = () => {
+  getUserInfo = () => {
     this.mainApi.getUserData().then((data) => {
       this.articleTitle.textContent = `${data.name}, у вас ${this.countArticle} сохранённых статей`;
     })
@@ -15,13 +15,13 @@ class AnalyticsMyNews {
 
   getSaveKeyword = () => {
     this.mainApi.getArticles().then((data) => {
-      this._getUserInfo();
+      this.getUserInfo();
       if (data !== undefined) {
       this.countArticle = data.length;
       data.forEach((element) => {
        this.keywordsArray.push(element.keyword)
       })
-      this._getUserInfo();
+      this.getUserInfo();
       this._getPopularKeyword();
       }
     })
