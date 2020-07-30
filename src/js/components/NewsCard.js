@@ -1,4 +1,5 @@
 import { setNormalData } from '../utils/setNormalData'
+import { imageUrl } from '../constants/constants';
 class NewsCard{
 
   constructor(mainApi) {
@@ -9,6 +10,7 @@ class NewsCard{
   getTemplate(cardObj, statusLogin, keyword) {
     this.searchKeyword = '';
     this.searchKeyword = keyword;
+    cardObj.urlToImage === null ? imageUrl : cardObj.urlToImage;
       if (statusLogin === 0){
         return `<div class="card">
                       <div class="card__photo">

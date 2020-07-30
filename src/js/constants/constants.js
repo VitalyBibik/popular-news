@@ -3,7 +3,7 @@ import { config } from "../config/config";
 export const msOnDay = 86400000;
 export const pageSize = 100;
 export const newsLang = 'ru';
-
+export const imageUrl = 'https://via.placeholder.com/300';
 export const options = JSON.parse( config ); // Настройка API
 
 // Validator
