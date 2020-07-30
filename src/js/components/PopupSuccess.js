@@ -5,11 +5,5 @@ class PopupSuccess extends Popup {
     super(containerPopup)
   }
 
-
-
-
-
-
-
 }
 export { PopupSuccess };
