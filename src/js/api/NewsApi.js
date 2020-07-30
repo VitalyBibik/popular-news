@@ -8,17 +8,17 @@ import { pageSize, newsLang } from "../constants/constants";
   }
   getNews (searchWord) {
     let data = getData();
-    console.log(`${this.options.baseUrl}${searchWord}&from=${data.fromDate}&to=${data.toDate}&language=${newsLang}&sortBy=publishedAt&pageSize=${pageSize}&apiKey=${this.options.headers.authorizationNews}`);
     return fetch(`${this.options.baseUrl}${searchWord}&from=${data.fromDate}&to=${data.toDate}&language=${newsLang}&sortBy=publishedAt&pageSize=${pageSize}&apiKey=${this.options.headers.authorizationNews}`)
       .then(res => {
         if (res.ok) {
-          return res.json()
+          return res.json();
         }
-        return Promise.reject(`Что то пошло не так ${res.status}`)
+        let json = res.json();
+        return json.then(Promise.reject.bind(Promise))
       })
       .catch((err) => {
-        console.log(err);
-      });
+        throw err;
+      })
   }
 }
 

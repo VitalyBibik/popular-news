@@ -29,6 +29,8 @@
          this.badFindNews.classList.remove('root__empty_status_disabled');
          this.rootResult.classList.remove('root__result_status_disabled');
          this.buttonShowMore.classList.add('search__button_status_disabled');
+         this.cardList.initCardListKeyWord(formInput.value);
+         this.cardList.initCardList(data.articles);
        } else {
          this.rootResult.classList.remove('root__result_status_disabled');
          this.cardList.initCardListKeyWord(formInput.value);
@@ -37,7 +39,9 @@
        }
 
      }).catch((e) => {
-     //  this.badFindNews.classList.add('root__empty_status_disabled');
+       this.badFindNews.classList.remove('root__empty_status_disabled');
+       this.rootResult.classList.remove('root__result_status_disabled');
+       this.buttonShowMore.classList.add('search__button_status_disabled');
        this.removeDisable(formInput, button);
        console.log(e);
      }).finally(() => {

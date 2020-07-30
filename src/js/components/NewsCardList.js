@@ -23,6 +23,7 @@ class NewsCardList {
     this.clearListCard();
     this.items = [];
     this.items.push(array);
+    this.showMoreArticles();
     this.mainApi.getUserData().then((data) => {
       if (data !== undefined) {
         this.statusLogin = 1;
