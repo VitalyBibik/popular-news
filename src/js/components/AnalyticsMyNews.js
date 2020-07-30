@@ -15,12 +15,15 @@ class AnalyticsMyNews {
 
   getAllArticle = () => {
     this.mainApi.getArticles().then((data) => {
+      this.getUserInfo();
+      if (data !== undefined) {
       this.countArticle = data.length;
       data.forEach((element) => {
        this.keywordsArray.push(element.keyword)
       })
       this.getUserInfo();
       this.getPopularKeyword();
+      }
     })
   }
   getPopularKeyword = () => {
@@ -44,10 +47,17 @@ class AnalyticsMyNews {
   setPopularWord(sortObj) {
     const arrayKeyWordsWithCount = sortObj.flat(Infinity);
     const wordArray = arrayKeyWordsWithCount.filter(e => typeof e === 'string');
-    this.articleKeyWordsArray[0].textContent = `${wordArray[0]},`
-    this.articleKeyWordsArray[1].textContent = `${wordArray[1]}`;
-    this.articleKeyWordsArray[2].textContent = `${wordArray.length - 2} другим`;
 
+    if (this.articleKeyWordsArray[1].textContent !== '') {
+      this.articleKeyWordsArray[0].textContent = `${wordArray[0]},`;
+      this.articleKeyWordsArray[1].textContent = `${wordArray[1]}`;
+      this.articleKeyWordsArray[2].textContent = ` и ${wordArray.length - 2} другим`;
+    }
+    else {
+      this.articleKeyWordsArray[0].textContent = `${wordArray[0]}`
+      this.articleKeyWordsArray[1].textContent = ``;
+      this.articleKeyWordsArray[2].textContent = ` и ${wordArray.length - 1} другим`;
+    }
   }
 
 

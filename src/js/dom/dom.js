@@ -1,17 +1,25 @@
 
 export const rootCard = document.querySelector('.result__card'); // Область карточек
 export const rootResult = document.querySelector('.result') // Секция карточек
+export const headerLogo = document.querySelector('.header__logo'); // Лого Хэдер
 
-export const buttonAuthSecondPage = document.querySelector('#button-auth-second'); // Кнопка авторизации на главной странице
 /* Popup Auth */
 export const buttonAuth = document.querySelector('#button-auth'); // Кнопка авторизации на главной странице
 export const popupAuthUser = document.querySelector('#popup-auth'); // Кнопка авторизации на главной странице
 export const popupAuthButton = document.querySelector('#submitSignIn'); // Кнопка Авторизации в форме входа
 
 export const popupAuthButtonRegister = document.querySelector('#moveToRegister'); // Кнопка Перехода на регистрацию в форме входа
+export const popupSignUpButtonLogin = document.querySelector('#moveToLogin'); // Кнопка Перехода на регистрацию в форме входа
+export const cleanPopupAuth = document.querySelector('#signIn');
+
+/* Popup Success */
+export const popupSuccessSignUp = document.querySelector('.popup__success');
+export const popupSuccessButton = document.querySelector('#successGoToLogin');
+
+
 
 /* Mobile */
-export const mobileButton = document.querySelector('#mobileOpen'); // Кнопка Входа в моб меню
+export const mobileButton = document.querySelector('.header__button'); // Кнопка Входа в моб меню
 /* Мобильное меню классы + в конце класс для запрета прокрутки */
 export const nav = document.querySelector('.nav');
 export const navSection = document.querySelector('.nav__section');
@@ -22,6 +30,8 @@ export const bodyOvHide = document.querySelector('.body-style');
 
 /* Popup Register */
 export const popupSignUp = document.querySelector('.popup__register');
+export const buttonSignUp = document.querySelector('#submitSignUp');
+export const cleanPopupSignUp = document.querySelector('#signUp')
 
 /* Header */
 export const arrayNavigationsHeaderHide = document.querySelectorAll('.navigation__li_status_unlogin') // Навигация хэдер cкрытая

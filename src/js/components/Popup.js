@@ -19,6 +19,11 @@
       this._removeListenerClose(popup1);
       popup1.classList.remove('popup_is_opened');
     }
+     if (event.target.classList.contains('popup__text_status_move')){
+       const popup1 = event.target.closest('.popup');
+       this._removeListenerClose(popup1);
+       popup1.classList.remove('popup_is_opened')
+     }
 
   }
   _addListenerClose = (popup) => {

@@ -12,6 +12,7 @@
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__search/header__search.css);
 @import url(../blocks/header/__logo/header__logo.css);
+@import url(../blocks/header/__logo/_mobile/header__logo_mobile.css);
 @import url(../blocks/header/__button/_status/_exit/header__button_status_exit.css);
 
 @import url(../blocks/button/button.css);

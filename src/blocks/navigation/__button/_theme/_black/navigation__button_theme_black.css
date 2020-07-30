@@ -8,3 +8,16 @@
   margin-left: 5px;
   top:2px;
 }
+
+@media screen and (min-width: 320px) and (max-width: 602px) {
+  .navigation__button_theme_black {
+    color: white;
+    border: 1px solid #fff;
+  }
+  .navigation__button_theme_black::after {
+    content: url("../../../../../images/logout.png");
+    position: relative;
+    margin-left: 5px;
+    top:5px;
+  }
+}

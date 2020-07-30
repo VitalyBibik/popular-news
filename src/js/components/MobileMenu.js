@@ -1,7 +1,7 @@
 
 class MobileMenu {
 
-  constructor(mobileButton, nav, navSection, navigation, arrayNavigationLi, overFlow, bodyOvHide) {
+  constructor(mobileButton, nav, navSection, navigation, arrayNavigationLi, overFlow, bodyOvHide, headerLogo) {
     this.mobileButton = mobileButton;
     this.nav = nav;
     this.navSection = navSection;
@@ -9,6 +9,7 @@ class MobileMenu {
     this.arrayNavigationLi = arrayNavigationLi;
     this.overFlow = overFlow;
     this.bodyOvHide = bodyOvHide;
+    this.headerLogo = headerLogo;
   }
 
   addListenersMobileMenu = () => {
@@ -21,6 +22,7 @@ class MobileMenu {
   }
 
   changeHeader = () => {
+    console.log(this.headerLogo);
     this.mobileButton.classList.toggle('header__button_status_exit');
     this.nav.classList.toggle('nav_mobile');
     this.navSection.classList.toggle('nav__section_mobile');
@@ -30,6 +32,7 @@ class MobileMenu {
     this.arrayNavigationLi.forEach((element) => {
       element.classList.toggle('navigation__li_mobile');
     })
+    this.headerLogo.classList.toggle('header__logo_mobile');
   }
 
 

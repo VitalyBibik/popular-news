@@ -26,6 +26,22 @@ class NewsCard{
                       </a>
            </div>`;
       }
+    if (statusLogin === 1) {
+      return `<div class="card">
+                      <div class="card__photo">
+                          <img src="${this.sanitizeHTMLUpdate(cardObj.urlToImage)}" alt="${this.sanitizeHTMLUpdate(cardObj.title)}" class="card__icon">
+                          <div class="card__button-block">
+                              <button class="button card__button"></button>
+                          </div>
+                      </div>
+                      <a href="${this.sanitizeHTMLUpdate(cardObj.url)}" target="_blank" class="card__link">
+                        <span class="card__data">${this.sanitizeHTMLUpdate(setNormalData(cardObj.publishedAt))}</span>
+                        <h3 class="card__title">${this.sanitizeHTMLUpdate(cardObj.title)}</h3>
+                        <p class="card__text">${this.sanitizeHTMLUpdate(cardObj.description)}</p>
+                        <span class="card__copyright">${this.sanitizeHTMLUpdate(cardObj.source.name)}</span>
+                      </a>
+           </div>`
+    }
       if (statusLogin === 2) {
        return `<div class="card"  id="${cardObj._id}">
           <div class="card__photo">
@@ -46,22 +62,7 @@ class NewsCard{
           </a>
         </div>`
       }
-      else {
-        return `<div class="card">
-                      <div class="card__photo">
-                          <img src="${this.sanitizeHTMLUpdate(cardObj.urlToImage)}" alt="${this.sanitizeHTMLUpdate(cardObj.title)}" class="card__icon">
-                          <div class="card__button-block">
-                              <button class="button card__button"></button>
-                          </div>
-                      </div>
-                      <a href="${this.sanitizeHTMLUpdate(cardObj.url)}" target="_blank" class="card__link">
-                        <span class="card__data">${this.sanitizeHTMLUpdate(setNormalData(cardObj.publishedAt))}</span>
-                        <h3 class="card__title">${this.sanitizeHTMLUpdate(cardObj.title)}</h3>
-                        <p class="card__text">${this.sanitizeHTMLUpdate(cardObj.description)}</p>
-                        <span class="card__copyright">${this.sanitizeHTMLUpdate(cardObj.source.name)}</span>
-                      </a>
-           </div>`
-      }
+
     }
 
    sanitizeHTMLUpdate(str) {

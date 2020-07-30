@@ -16,14 +16,14 @@
         <div class="nav">
             <p class="header__logo">NewsExplorer</p>
             <button class="header__button header__button_theme_black"></button>
-            <div class="nav">
+            <div class="nav__section">
                 <ul class="navigation">
                     <li class="navigation__li"><a href="index.html" class="navigation__link  navigation__link_colour_black" target="_blank">Главная</a></li>
-                    <li class="navigation__li navigation__li_status_login"><a href="myNews.html" class="navigation__link navigation__link_status_active-black  navigation__link_colour_black" target="_blank">Сохранненые статьи</a></li>
-                    <li class="navigation__li navigation__li_status_login">
+                    <li class="navigation__li"><a href="myNews.html" class="navigation__link navigation__link_status_active-black  navigation__link_colour_black" target="_blank">Сохранненые статьи</a></li>
+                    <li class="navigation__li">
                         <button class="button navigation__button navigation__button_theme_black navigation__li_status_needAuth" id="button-auth-second">Грета</button>
                     </li>
-                    <li class="navigation__li navigation__li_status_unlogin">
+                    <li class="navigation__li navigation__li_status_needAuth navigation__li_status_unlogin ">
                         <button class="button navigation__button navigation__button_theme_black">Авторизоваться</button>
                     </li>
                 </ul>
@@ -34,7 +34,7 @@
         <div class="articles root__articles">
             <p class="articles__info">Сохранённые статьи</p>
             <h2 class="articles__title">Грета, у вас 5 сохранённых статей</h2>
-            <p class="articles__subtitle">По ключевым словам: <span class="articles__main-word">Природа,</span> <span class="articles__main-word">Тайга</span> и <span class="articles__main-word">2 другим</span></p>
+            <p class="articles__subtitle">По ключевым словам: <span class="articles__main-word"></span> <span class="articles__main-word"></span><span class="articles__main-word"></span></p>
         </div>
         <div class="result root__result">
             <div class="result__card">
@@ -54,6 +54,7 @@
         </ul>
     </footer>
 </div>
+<div class="overflow"></div>
 <script src="<%= htmlWebpackPlugin.files.chunks.myNews.entry %>"></script>
 </body>
 </html>

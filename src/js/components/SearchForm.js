@@ -12,34 +12,46 @@
 
    findNews = (event) => {
      event.preventDefault();
+     const formInput = this.elHeaderForm.querySelector('.search__input');
+     if (formInput.value === '') {
+       return;
+     }
      const button = event.currentTarget;
-     button.setAttribute('disabled',true);
-
-     const word = this.elHeaderForm.querySelector('.search__input').value;
-
+     this.removeEnabled(button,formInput);
      this.renderLoading(false);
      this.badFindNews.classList.add('root__empty_status_disabled');
+     this.rootResult.classList.add('root__result_status_disabled');
 
-     this.newsApi.getNews(word).then((data) => {
-       button.removeAttribute('disabled');
+     this.newsApi.getNews(formInput.value).then((data) => {
+       this.removeDisable(formInput, button);
 
        if (( data === undefined || data.totalResults === 0))  {
          this.badFindNews.classList.remove('root__empty_status_disabled');
-         this.rootResult.classList.add('root__result_status_disabled');
+         this.rootResult.classList.remove('root__result_status_disabled');
          this.buttonShowMore.classList.add('search__button_status_disabled');
+       } else {
+         this.rootResult.classList.remove('root__result_status_disabled');
+         this.cardList.initCardListKeyWord(formInput.value);
+         this.cardList.initCardList(data.articles);
+
        }
-      this.rootResult.classList.remove('root__result_status_disabled');
-      this.cardList.initCardListKeyWord(word);
-      this.cardList.initCardList(data.articles);
-       console.log(data,'dataSearchForm');
+
      }).catch((e) => {
+     //  this.badFindNews.classList.add('root__empty_status_disabled');
+       this.removeDisable(formInput, button);
        console.log(e);
      }).finally(() => {
       this.renderLoading(true);
      })
    }
-
-
+   removeDisable = (button, formInput) => {
+     button.removeAttribute('disabled');
+     formInput.removeAttribute('disabled');
+   }
+   removeEnabled = (button, formInput) => {
+     button.setAttribute('disabled',true);
+     formInput.setAttribute('disabled',true);
+   }
 
    renderLoading = (isLoading) => {
      if (!isLoading){

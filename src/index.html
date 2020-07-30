@@ -80,17 +80,18 @@
               <form class="popup__form" name="signin" id="signIn">
                   <div class="input-container">
                       <span class="popup__text">Email</span>
-                      <input id="emailLogin" required type="email" name="email" class="popup__input" pattern="\b^[a-z0-9_]+([-\.][a-z0-9_-]+)*@[a-z]+(?:\.[a-z]+)?\b" placeholder="Введите почту">
+                      <input id="emailLogin" required type="email" name="email" class="popup__input" placeholder="Введите почту">
                       <span id="error-email" class="error-message"></span>
                   </div>
                   <div class="input-container">
                       <span class="popup__text">Пароль</span>
-                      <input id="passwordLogin" required type="password" name="password" class="popup__input"  minlength="8" maxlength="32" placeholder="Введите пароль">
+                      <input id="passwordLogin" required type="password" name="password" class="popup__input" minlength="8" placeholder="Введите пароль">
                       <span id="error-password" class="error-message"></span>
                   </div>
-                    <button id="submitSignIn" type="submit" class="button popup__button popup__button_is_disabled">Войти</button>
+                    <span id="error-login" class="error-message error-message_type_server"></span>
+                    <button id="submitSignIn" type="submit" class="button popup__button popup__button_is_disabled" disabled>Войти</button>
                   <div class="input-container">
-                  <span class="popup__change">или</span><button class="popup__text" id="moveToRegister">Зарегестрироваться</button>
+                    <span class="popup__change">или</span><span class="popup__text popup__text_status_move" id="moveToRegister">Зарегистрироваться</span>
                   </div>
               </form>
           </div>
@@ -102,23 +103,23 @@
               <form class="popup__form" name="signup" id="signUp">
                   <div class="input-container">
                       <span class="popup__text">Email</span>
-                      <input id="email" required type="email" name="email" class="popup__input" pattern="\b^[a-z0-9_]+([-\.][a-z0-9_-]+)*@[a-z]+(?:\.[a-z]+)?\b" placeholder="Введите почту">
+                      <input id="email" required type="email" name="email" class="popup__input"  placeholder="Введите почту">
                       <span id="error-newEmail" class="error-message"></span>
                   </div>
                   <div class="input-container">
                       <span class="popup__text">Пароль</span>
-                      <input id="password" required type="password" name="password" class="popup__input"  minlength="8" maxlength="32" placeholder="Введите пароль">
+                      <input id="password" required type="password" name="password" class="popup__input" minlength="8"  placeholder="Введите пароль">
                       <span id="error-newPassword" class="error-message"></span>
                   </div>
                   <div class="input-container input-container_is_clear-bottom">
                       <span class="popup__text">Имя</span>
-                      <input id="userName" required type="text" name="userName" class="popup__input" pattern="^[А-ЯЁ]{1}[а-яё]+(-([А-ЯЁ]{1}[а-яё]+))?$"  minlength="2" maxlength="20" placeholder="Введите своё имя">
+                      <input id="userName" required type="text" name="userName" class="popup__input" placeholder="Введите своё имя">
                       <span id="error-newName" class="error-message"></span>
                   </div>
                   <span id="error-newUser" class="error-message error-message_type_server"></span>
-                  <button id="submitSignUp" type="submit" class="button popup__button popup__button_is_disabled">Зарегестрироваться</button>
+                  <button id="submitSignUp" type="submit" class="button popup__button popup__button_is_disabled" disabled>Зарегистрироваться</button>
                   <div class="input-container">
-                      <span class="popup__change">или</span><a href="#" class="popup__text">Войти</a>
+                    <span class="popup__change">или</span><span class="popup__text popup__text_status_move" id="moveToLogin">Войти</span>
                   </div>
               </form>
           </div>
@@ -127,7 +128,7 @@
           <div class="popup__content popup__content_size_small">
               <img src="<%= require('./images/close.svg').default %>" alt="Close.Закрыть" class="popup__close">
               <h3 class="popup__title popup__title_size_small">Пользователь успешно зарегестрирован!</h3>
-              <a href="#" class="popup__text popup__text_size_medium">Выполнить вход</a>
+              <span class="popup__text popup__text_size_medium popup__text_status_move" id="successGoToLogin">Выполнить вход</span>
           </div>
       </div>
 

@@ -15,13 +15,13 @@ class FormValidator {
     error.textContent = "";
   };
 
-  setSubmitButtonState = () => {
-    if (this.form.checkValidity()) {
-      this.buttonEnable();
-    } else {
-      this.buttonDissable();
-    }
-  };
+    setSubmitButtonState = () => {
+      if (this.form.checkValidity()) {
+        this.buttonEnable();
+      } else {
+        this.buttonDissable();
+      }
+    };
 
   setEventListeners = () => {
     this.form.addEventListener("input", event => {
@@ -30,16 +30,17 @@ class FormValidator {
     });
   };
 
-  buttonEnable = () => {
-    this.button.removeAttribute("disabled");
-    this.button.classList.remove("popup__button_is_disabled");
-    this.button.classList.add("popup__button_is_enabled");
-  };
+    buttonEnable = () => {
+      this.button.removeAttribute("disabled");
+      this.button.classList.remove("popup__button_is_disabled");
+      this.button.classList.add("popup__button_is_enabled");
+    };
 
-  buttonDissable = () => {
-    this.button.setAttribute("disabled", true);
-    this.button.classList.add("popup__button_is_disabled");
-    this.button.classList.remove("popup__button_is_enabled");
-  };
+    buttonDissable = () => {
+      this.button.setAttribute("disabled", true);
+      this.button.classList.add("popup__button_is_disabled");
+      this.button.classList.remove("popup__button_is_enabled");
+    };
+
 }
 export { FormValidator };

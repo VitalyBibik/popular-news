@@ -1,15 +1,33 @@
-import {getData} from "../utils/getData";
-import {NEWS_LANG, PAGESIZE} from "../constants/constants";
 
 class MainApi {
   constructor (options) {
     this.options = options;
   }
 
-   signUp () {
-}
-//     credentials: 'include',
-//        withCredentials: true,
+  signUp = (userEmail, userPassword, userName) => {
+    return fetch(`${this.options.myURL}/signup`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include',
+      body: JSON.stringify({
+        email: userEmail,
+        password: userPassword,
+        name: userName
+      }),
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+        let json = res.json();
+        return json.then(Promise.reject.bind(Promise))
+      })
+      .catch((err) => {
+        throw err;
+      })
+  }
    signIn = (userEmail, userPassword) => {
      return fetch(`${this.options.myURL}/signin`, {
        method: 'POST',
@@ -25,13 +43,14 @@ class MainApi {
      })
        .then(res => {
          if (res.ok) {
-           return res.json()
+           return res.json();
          }
-         return Promise.reject(`Что то пошло не так ${res.status}`)
+         let json = res.json();
+         return json.then(Promise.reject.bind(Promise))
        })
        .catch((err) => {
-         console.log(err);
-       });
+         throw err;
+       })
    }
 
    getUserData () {
@@ -44,11 +63,14 @@ class MainApi {
      })
        .then(res => {
          if (res.ok) {
-           return res.json()
+           return res.json();
          }
-         return Promise.reject(`Что то пошло не так ${res.status}`)
+         let json = res.json();
+         return json.then(Promise.reject.bind(Promise))
        })
-       .catch((error) => console.log(error));
+       .catch((err) => {
+         throw err;
+       })
    }
 
    getArticles () {
@@ -61,11 +83,14 @@ class MainApi {
      })
        .then(res => {
          if (res.ok) {
-           return res.json()
+           return res.json();
          }
-         return Promise.reject(`Что то пошло не так ${res.status}`)
+         let json = res.json();
+         return json.then(Promise.reject.bind(Promise))
        })
-       .catch((error) => console.log(error));
+       .catch((err) => {
+         throw err;
+       })
    }
   createArticle (cardObject) {
     return fetch(`${this.options.myURL}/articles`, {
@@ -86,11 +111,14 @@ class MainApi {
     })
       .then(res => {
         if (res.ok) {
-          return res.json()
+          return res.json();
         }
-        return Promise.reject(`Что то пошло не так ${res.status}`)
+        let json = res.json();
+        return json.then(Promise.reject.bind(Promise))
       })
-      .catch((error) => console.log(error));
+      .catch((err) => {
+        throw err;
+      })
   }
 
   removeArticle = (id) => {
@@ -104,11 +132,14 @@ class MainApi {
     })
       .then(res => {
         if (res.ok) {
-          return res.json()
+          return res.json();
         }
-        return Promise.reject(`Что то пошло не так ${res.status}`)
+        let json = res.json();
+        return json.then(Promise.reject.bind(Promise))
       })
-      .catch((error) => console.log(error));
+      .catch((err) => {
+        throw err;
+      })
   }
 
 
@@ -122,13 +153,14 @@ class MainApi {
     })
       .then(res => {
         if (res.ok) {
-          return res.json()
+          return res.json();
         }
-        return Promise.reject(`Что то пошло не так ${res.status}`)
+        let json = res.json();
+        return json.then(Promise.reject.bind(Promise))
       })
       .catch((err) => {
-        console.log(err);
-      });
+        throw err;
+      })
   }
 
 }

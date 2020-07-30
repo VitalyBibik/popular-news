@@ -8,6 +8,7 @@ import { pageSize, newsLang } from "../constants/constants";
   }
   getNews (searchWord) {
     let data = getData();
+    console.log(`${this.options.baseUrl}${searchWord}&from=${data.fromDate}&to=${data.toDate}&language=${newsLang}&sortBy=publishedAt&pageSize=${pageSize}&apiKey=${this.options.headers.authorizationNews}`);
     return fetch(`${this.options.baseUrl}${searchWord}&from=${data.fromDate}&to=${data.toDate}&language=${newsLang}&sortBy=publishedAt&pageSize=${pageSize}&apiKey=${this.options.headers.authorizationNews}`)
       .then(res => {
         if (res.ok) {
