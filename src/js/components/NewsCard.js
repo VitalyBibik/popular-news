@@ -1,20 +1,19 @@
-import { setNormalData } from '../utils/setNormalData'
-import { imageUrl, objCardStatus } from '../constants/constants';
-class NewsCard{
+import { imageUrl, objCardStatus } from "../constants/constants";
+import { setNormalData } from "../utils/setNormalData";
 
+class NewsCard{
   constructor(mainApi) {
     this.mainApi = mainApi;
     this.searchKeyword = '';
   }
-
   getTemplate(cardObj, statusLogin, keyword) {
     this.searchKeyword = '';
     this.searchKeyword = keyword;
-    cardObj.urlToImage === null ? imageUrl : cardObj.urlToImage;
-      if (statusLogin === objCardStatus.statusCardUnLogin){
-        return `<div class="card">
+    const image = cardObj.urlToImage === null ? imageUrl : cardObj.urlToImage;
+    if (statusLogin === objCardStatus.statusCardUnLogin){
+      return `<div class="card">
                       <div class="card__photo">
-                          <img src="${this._sanitizeHTMLUpdate(cardObj.urlToImage)}" alt="${(this._sanitizeHTMLUpdate(cardObj.title))}" class="card__icon">
+                          <img src="${this._sanitizeHTMLUpdate(image)}" alt="${(this._sanitizeHTMLUpdate(cardObj.title))}" class="card__icon">
                           <div class="card__button-block">
                               <button class="button card__button-login card__button_status_disabled">Войдите, чтобы сохранять статьи</button>
                               <button class="button card__button" disabled></button>
@@ -27,11 +26,11 @@ class NewsCard{
                         <span class="card__copyright">${this._sanitizeHTMLUpdate(cardObj.source.name)}</span>
                       </a>
            </div>`;
-      }
+    }
     if (statusLogin === objCardStatus.statusCardLogin) {
       return `<div class="card">
                       <div class="card__photo">
-                          <img src="${this._sanitizeHTMLUpdate(cardObj.urlToImage)}" alt="${this._sanitizeHTMLUpdate(cardObj.title)}" class="card__icon">
+                          <img src="${this._sanitizeHTMLUpdate(image)}" alt="${this._sanitizeHTMLUpdate(cardObj.title)}" class="card__icon">
                           <div class="card__button-block">
                               <button class="button card__button"></button>
                           </div>
@@ -44,8 +43,8 @@ class NewsCard{
                       </a>
            </div>`
     }
-      if (statusLogin === objCardStatus.statusCardSave) {
-       return `<div class="card"  id="${cardObj._id}">
+    if (statusLogin === objCardStatus.statusCardSave) {
+      return `<div class="card"  id="${cardObj._id}">
           <div class="card__photo">
             <img src="${this._sanitizeHTMLUpdate(cardObj.image)}" alt="${(this._sanitizeHTMLUpdate(cardObj.title))}" class="card__icon">
               <div class="card__button-block">
@@ -63,20 +62,17 @@ class NewsCard{
             <span class="card__copyright">${this._sanitizeHTMLUpdate(cardObj.source)}</span>
           </a>
         </div>`
-      }
-
     }
-
-   _sanitizeHTMLUpdate(str) {
+  }
+  _sanitizeHTMLUpdate(str) {
     let temp = document.createElement('div');
     temp.textContent = str;
     return temp.innerHTML;
   }
-
   saveHandler = (event) => {
     if (event.target.classList.contains('card__button')) {
-     const button = event.target.closest('.card__button');
-     const card = event.target.closest('.card');
+      const button = event.target.closest('.card__button');
+      const card = event.target.closest('.card');
       const cardObj = {
         keyword: this.searchKeyword,
         title: card.querySelector('.card__title').textContent,
@@ -86,7 +82,6 @@ class NewsCard{
         link: card.querySelector('.card__link').getAttribute('href'),
         image: card.querySelector('.card__icon').getAttribute('src')
       }
-
       this.mainApi.createArticle(cardObj).then((data) =>{
         if (data !== undefined) {
           button.classList.add('card__button_status_marked');
@@ -112,6 +107,5 @@ class NewsCard{
       }
     }
   }
-
 }
 export { NewsCard }
