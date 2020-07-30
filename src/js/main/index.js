@@ -75,7 +75,9 @@ registerValidator.setEventListeners();
 
 window.addEventListener('keydown', function closeFormByKeydown(event) {
     if (event.keyCode === 27) {
-      popupAuthUser.classList.remove("popup_is_opened");
+      popupAuth.removePopup();
+      popupReg.removePopup();
+      popupSuccess.removePopup();
     }
 })
 popupAuthButtonRegister.addEventListener('click', (e) => {
