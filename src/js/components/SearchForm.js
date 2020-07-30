@@ -14,6 +14,7 @@
      event.preventDefault();
      const formInput = this.elHeaderForm.querySelector('.search__input');
      if (formInput.value === '') {
+       alert('Поиское поле пустое!')
        return;
      }
      const button = event.currentTarget;
