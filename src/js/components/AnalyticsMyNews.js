@@ -7,26 +7,26 @@ class AnalyticsMyNews {
     this.countArticle = 0;
     this.keywordsArray = [];
   }
-  getUserInfo = () => {
+  _getUserInfo = () => {
     this.mainApi.getUserData().then((data) => {
       this.articleTitle.textContent = `${data.name}, у вас ${this.countArticle} сохранённых статей`;
     })
   }
 
-  getAllArticle = () => {
+  getSaveKeyword = () => {
     this.mainApi.getArticles().then((data) => {
-      this.getUserInfo();
+      this._getUserInfo();
       if (data !== undefined) {
       this.countArticle = data.length;
       data.forEach((element) => {
        this.keywordsArray.push(element.keyword)
       })
-      this.getUserInfo();
-      this.getPopularKeyword();
+      this._getUserInfo();
+      this._getPopularKeyword();
       }
     })
   }
-  getPopularKeyword = () => {
+  _getPopularKeyword = () => {
     let result = {};
     this.keywordsArray.forEach(function (a) {
       if (result[a] !== undefined)
@@ -41,10 +41,10 @@ class AnalyticsMyNews {
     sortable.sort((a, b) =>{
       return b[1] - a[1];
     })
-    this.setPopularWord(sortable);
+    this._setPopularWord(sortable);
 
 }
-  setPopularWord(sortObj) {
+  _setPopularWord(sortObj) {
     const arrayKeyWordsWithCount = sortObj.flat(Infinity);
     const wordArray = arrayKeyWordsWithCount.filter(e => typeof e === 'string');
 

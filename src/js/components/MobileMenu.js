@@ -18,11 +18,10 @@ class MobileMenu {
 
   mobileMenuOpen = (event) => {
     event.preventDefault();
-    this.changeHeader(); // Меняем стили
+    this._changeHeader(); // Меняем стили
   }
 
-  changeHeader = () => {
-    console.log(this.headerLogo);
+  _changeHeader = () => {
     this.mobileButton.classList.toggle('header__button_status_exit');
     this.nav.classList.toggle('nav_mobile');
     this.navSection.classList.toggle('nav__section_mobile');

@@ -7,17 +7,17 @@ import { Popup }  from "./Popup";
     this.header = header;
   }
 
-  login = (event) => {
+  _login = (event) => {
     event.preventDefault();
     const button = event.currentTarget;
     const form = this.containerPopup.querySelector('#signIn');
     const email = this.containerPopup.querySelector('#emailLogin');
     const password = this.containerPopup.querySelector('#passwordLogin');
 
-    this.removeEnabled(button, email, password);
+    this._removeEnabled(button, email, password);
 
     this.myApy.signIn(email.value, password.value).then((data) => {
-      this.removeDisable(button, email, password);
+      this._removeDisable(button, email, password);
       if (data === undefined) {
         return;
       }
@@ -25,16 +25,16 @@ import { Popup }  from "./Popup";
       this.removePopup();
       this.header.render();
     }).catch((e) => {
-      this.removeDisable(button, email, password);
+      this._removeDisable(button, email, password);
       this.containerPopup.querySelector('.error-message_type_server').textContent = e.message;
     })
   }
-   removeDisable = (button, email, password) => {
+   _removeDisable = (button, email, password) => {
      button.removeAttribute('disabled');
      email.removeAttribute('disabled');
      password.removeAttribute('disabled');
    }
-   removeEnabled = (button, email, password) => {
+   _removeEnabled = (button, email, password) => {
      button.setAttribute('disabled',true);
      email.setAttribute('disabled',true);
      password.setAttribute('disabled',true);

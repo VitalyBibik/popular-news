@@ -64,10 +64,10 @@ const registerValidator = new FormValidator(cleanPopupSignUp, buttonSignUp, erro
 
 
 buttonAuth.addEventListener('click', popupAuth.open);
-popupAuthButton.addEventListener('click', popupAuth.login);
-elHeaderButton.addEventListener('click', searchForm.findNews);
+popupAuthButton.addEventListener('click', popupAuth._login);
+elHeaderButton.addEventListener('click', searchForm._findNews);
 buttonShowMore.addEventListener('click', newsCardList.buttonRender);
-buttonSignUp.addEventListener('click', popupReg.register);
+buttonSignUp.addEventListener('click', popupReg._register);
 
 authValidator.setEventListeners();
 registerValidator.setEventListeners();

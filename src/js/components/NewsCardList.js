@@ -10,7 +10,7 @@ class NewsCardList {
     this.keyword = '';
   }
 
-  addCard = (cardObj) => {
+  _addCard = (cardObj) => {
     return this.renderPosition.insertAdjacentHTML('beforeEnd', this.newsCard.getTemplate(cardObj, this.statusLogin, this.keyword) );
   }
 
@@ -20,17 +20,17 @@ class NewsCardList {
   }
 
     initCardList = (array) => {
-    this.clearListCard();
+    this._clearListCard();
     this.items = [];
     this.items.push(array);
-    this.showMoreArticles();
+    this._showMoreArticles();
     this.mainApi.getUserData().then((data) => {
       if (data !== undefined) {
         this.statusLogin = 1;
-        this.showMoreArticles();
+        this._showMoreArticles();
       } else {
         this.statusLogin = 0;
-        this.showMoreArticles();
+        this._showMoreArticles();
       }
     })
   }
@@ -39,14 +39,14 @@ class NewsCardList {
     this.keyword = word;
   }
 
-    showMoreArticles = () => {
+    _showMoreArticles = () => {
     let currentIndex = 0;
     let currentLimit = 3;
     if ( this.items['0'].length !== 0) {
       this.buttonMore.classList.remove('search__button_status_disabled');
       currentLimit += currentIndex;
       for (currentIndex; currentIndex < currentLimit && currentIndex <  this.items[0].length; currentIndex++) {
-        this.addCard(this.items[0][currentIndex]);
+        this._addCard(this.items[0][currentIndex]);
         this.items[0].shift();
       }
     } else {
@@ -56,9 +56,9 @@ class NewsCardList {
 
   buttonRender = (event) => {
     event.preventDefault();
-    this.showMoreArticles();
+    this._showMoreArticles();
   }
-  clearListCard = () => {
+  _clearListCard = () => {
     while (this.renderPosition.firstChild) {
       this.renderPosition.removeChild(this.renderPosition.firstChild);
     }
@@ -67,7 +67,7 @@ class NewsCardList {
     this.mainApi.getArticles().then((data) => {
       this.statusLogin = 2;
       data.forEach((element) => {
-        this.addCard(element);
+        this._addCard(element);
       })
     }).catch((err) => {
       console.log(err);

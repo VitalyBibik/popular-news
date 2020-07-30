@@ -12,60 +12,60 @@ class NewsCard{
       if (statusLogin === 0){
         return `<div class="card">
                       <div class="card__photo">
-                          <img src="${this.sanitizeHTMLUpdate(cardObj.urlToImage)}" alt="${(this.sanitizeHTMLUpdate(cardObj.title))}" class="card__icon">
+                          <img src="${this._sanitizeHTMLUpdate(cardObj.urlToImage)}" alt="${(this._sanitizeHTMLUpdate(cardObj.title))}" class="card__icon">
                           <div class="card__button-block">
                               <button class="button card__button-login card__button_status_disabled">Войдите, чтобы сохранять статьи</button>
                               <button class="button card__button" disabled></button>
                           </div>
                       </div>
-                      <a href="${this.sanitizeHTMLUpdate(cardObj.url)}" target="_blank" class="card__link">
-                        <span class="card__data">${this.sanitizeHTMLUpdate(setNormalData(cardObj.publishedAt))}</span>
-                        <h3 class="card__title">${this.sanitizeHTMLUpdate(cardObj.title)}</h3>
-                        <p class="card__text">${this.sanitizeHTMLUpdate(cardObj.description)}</p>
-                        <span class="card__copyright">${this.sanitizeHTMLUpdate(cardObj.source.name)}</span>
+                      <a href="${this._sanitizeHTMLUpdate(cardObj.url)}" target="_blank" class="card__link">
+                        <span class="card__data">${this._sanitizeHTMLUpdate(setNormalData(cardObj.publishedAt))}</span>
+                        <h3 class="card__title">${this._sanitizeHTMLUpdate(cardObj.title)}</h3>
+                        <p class="card__text">${this._sanitizeHTMLUpdate(cardObj.description)}</p>
+                        <span class="card__copyright">${this._sanitizeHTMLUpdate(cardObj.source.name)}</span>
                       </a>
            </div>`;
       }
     if (statusLogin === 1) {
       return `<div class="card">
                       <div class="card__photo">
-                          <img src="${this.sanitizeHTMLUpdate(cardObj.urlToImage)}" alt="${this.sanitizeHTMLUpdate(cardObj.title)}" class="card__icon">
+                          <img src="${this._sanitizeHTMLUpdate(cardObj.urlToImage)}" alt="${this._sanitizeHTMLUpdate(cardObj.title)}" class="card__icon">
                           <div class="card__button-block">
                               <button class="button card__button"></button>
                           </div>
                       </div>
-                      <a href="${this.sanitizeHTMLUpdate(cardObj.url)}" target="_blank" class="card__link">
-                        <span class="card__data">${this.sanitizeHTMLUpdate(setNormalData(cardObj.publishedAt))}</span>
-                        <h3 class="card__title">${this.sanitizeHTMLUpdate(cardObj.title)}</h3>
-                        <p class="card__text">${this.sanitizeHTMLUpdate(cardObj.description)}</p>
-                        <span class="card__copyright">${this.sanitizeHTMLUpdate(cardObj.source.name)}</span>
+                      <a href="${this._sanitizeHTMLUpdate(cardObj.url)}" target="_blank" class="card__link">
+                        <span class="card__data">${this._sanitizeHTMLUpdate(setNormalData(cardObj.publishedAt))}</span>
+                        <h3 class="card__title">${this._sanitizeHTMLUpdate(cardObj.title)}</h3>
+                        <p class="card__text">${this._sanitizeHTMLUpdate(cardObj.description)}</p>
+                        <span class="card__copyright">${this._sanitizeHTMLUpdate(cardObj.source.name)}</span>
                       </a>
            </div>`
     }
       if (statusLogin === 2) {
        return `<div class="card"  id="${cardObj._id}">
           <div class="card__photo">
-            <img src="${this.sanitizeHTMLUpdate(cardObj.image)}" alt="${(this.sanitizeHTMLUpdate(cardObj.title))}" class="card__icon">
+            <img src="${this._sanitizeHTMLUpdate(cardObj.image)}" alt="${(this._sanitizeHTMLUpdate(cardObj.title))}" class="card__icon">
               <div class="card__button-block">
                 <button class="button card__button-login card__button_status_disabled card__button-login_fontSize_medium card__button-login_border_small card__button-login_size_small">Убрать из сохранённых</button>
                 <button class="button card__button-del"></button>
               </div>
               <div class="card__button-blockWord">
-                <button class="button card__button-word">${this.sanitizeHTMLUpdate(cardObj.keyword)}</button>
+                <button class="button card__button-word">${this._sanitizeHTMLUpdate(cardObj.keyword)}</button>
               </div>
           </div>
-          <a href="${this.sanitizeHTMLUpdate(cardObj.link)}" target="_blank" class="card__link">
-            <span class="card__data">${this.sanitizeHTMLUpdate(cardObj.date)}</span>
-            <h3 class="card__title">${this.sanitizeHTMLUpdate(cardObj.title)}</h3>
-            <p class="card__text">${this.sanitizeHTMLUpdate(cardObj.text)}</p>
-            <span class="card__copyright">${this.sanitizeHTMLUpdate(cardObj.source)}</span>
+          <a href="${this._sanitizeHTMLUpdate(cardObj.link)}" target="_blank" class="card__link">
+            <span class="card__data">${this._sanitizeHTMLUpdate(cardObj.date)}</span>
+            <h3 class="card__title">${this._sanitizeHTMLUpdate(cardObj.title)}</h3>
+            <p class="card__text">${this._sanitizeHTMLUpdate(cardObj.text)}</p>
+            <span class="card__copyright">${this._sanitizeHTMLUpdate(cardObj.source)}</span>
           </a>
         </div>`
       }
 
     }
 
-   sanitizeHTMLUpdate(str) {
+   _sanitizeHTMLUpdate(str) {
     let temp = document.createElement('div');
     temp.textContent = str;
     return temp.innerHTML;

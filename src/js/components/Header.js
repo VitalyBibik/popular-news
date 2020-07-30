@@ -18,7 +18,7 @@
        element.classList.remove('navigation__li_status_unlogin');
         if (index === naviButtonLength) {
          element.querySelector('.navigation__button').textContent = userName;
-         this.addListenerLogout(element);
+         this._addListenerLogout(element);
         }
       })
     })
@@ -31,7 +31,7 @@
       if (data === undefined){
         return location = './';
       }
-      this.addListenerLogout(this.navigationHeaderAuth);
+      this._addListenerLogout(this.navigationHeaderAuth);
       this.navigationHeaderAuth.textContent = data.name;
     })
       .catch((e)=> {
@@ -39,15 +39,15 @@
       })
   }
 
-  addListenerLogout = (element) => {
-  element.addEventListener('click', this.removeListenerLogout)
+  _addListenerLogout = (element) => {
+  element.addEventListener('click', this._removeListenerLogout)
   }
-  removeListenerLogout = (event) => {
+  _removeListenerLogout = (event) => {
     if (event.target.classList.contains('navigation__button')) {
       event.preventDefault();
      const liButton = event.currentTarget;
      this.mainApi.logout().then(() => {
-        liButton.removeEventListener('click', this.addListenerLogout);
+        liButton.removeEventListener('click', this._addListenerLogout);
         location.reload();
       })
         .catch((e) => {

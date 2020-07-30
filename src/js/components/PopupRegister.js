@@ -7,7 +7,7 @@ class PopupRegister extends Popup {
     this.openSuccessForm = openSuccessForm;
   }
 
-  register = (event) => {
+  _register = (event) => {
     event.preventDefault();
     const button = event.currentTarget;
     const form = this.containerPopup.querySelector('#signUp');
@@ -15,27 +15,27 @@ class PopupRegister extends Popup {
     const password = this.containerPopup.querySelector('#password');
     const userName = this.containerPopup.querySelector('#userName');
 
-    this.removeEnabled(button, email, password, userName);
+    this._removeEnabled(button, email, password, userName);
 
     this.mainApi.signUp(email.value, password.value, userName.value).then((data) => {
-      this.removeDisable(button, email, password, userName);
+      this._removeDisable(button, email, password, userName);
       if (data !== undefined) {
         form.reset();
         this.removePopup();
         this.openSuccessForm();
       }
     }).catch((e) => {
-      this.removeDisable(button, email, password, userName);
+      this._removeDisable(button, email, password, userName);
       this.containerPopup.querySelector('.error-message_type_server').textContent = e.message;
     })
   }
-  removeDisable = (button, email, password, userName) => {
+  _removeDisable = (button, email, password, userName) => {
     button.removeAttribute('disabled');
     email.removeAttribute('disabled');
     password.removeAttribute('disabled');
     userName.removeAttribute('disabled');
   }
-  removeEnabled = (button, email, password, userName) => {
+  _removeEnabled = (button, email, password, userName) => {
     button.setAttribute('disabled',true);
     email.setAttribute('disabled',true);
     password.setAttribute('disabled',true);

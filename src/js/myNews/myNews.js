@@ -39,5 +39,5 @@ const mobileMenu = new MobileMenu(mobileButton, nav, navSection, navigation, arr
 header.renderSecondPage();
 newsCardList.getAllArticle();
 newsCardList.addListeners();
-analyticsMyNews.getAllArticle();
+analyticsMyNews.getSaveKeyword();
 mobileMenu.addListenersMobileMenu();

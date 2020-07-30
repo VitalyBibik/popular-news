@@ -10,20 +10,20 @@
      this.buttonShowMore = buttonShowMore;
    }
 
-   findNews = (event) => {
+   _findNews = (event) => {
      event.preventDefault();
      const formInput = this.elHeaderForm.querySelector('.search__input');
      if (formInput.value === '') {
        return;
      }
      const button = event.currentTarget;
-     this.removeEnabled(button,formInput);
-     this.renderLoading(false);
+     this._removeEnabled(button,formInput);
+     this._renderLoading(false);
      this.badFindNews.classList.add('root__empty_status_disabled');
      this.rootResult.classList.add('root__result_status_disabled');
 
      this.newsApi.getNews(formInput.value).then((data) => {
-       this.removeDisable(formInput, button);
+       this._removeDisable(formInput, button);
 
        if (( data === undefined || data.totalResults === 0))  {
          this.badFindNews.classList.remove('root__empty_status_disabled');
@@ -42,22 +42,22 @@
        this.badFindNews.classList.remove('root__empty_status_disabled');
        this.rootResult.classList.remove('root__result_status_disabled');
        this.buttonShowMore.classList.add('search__button_status_disabled');
-       this.removeDisable(formInput, button);
+       this._removeDisable(formInput, button);
        console.log(e);
      }).finally(() => {
-      this.renderLoading(true);
+      this._renderLoading(true);
      })
    }
-   removeDisable = (button, formInput) => {
+   _removeDisable = (button, formInput) => {
      button.removeAttribute('disabled');
      formInput.removeAttribute('disabled');
    }
-   removeEnabled = (button, formInput) => {
+   _removeEnabled = (button, formInput) => {
      button.setAttribute('disabled',true);
      formInput.setAttribute('disabled',true);
    }
 
-   renderLoading = (isLoading) => {
+   _renderLoading = (isLoading) => {
      if (!isLoading){
        this.goodFindNews.classList.remove('root__find_status_disabled');
      } else {
