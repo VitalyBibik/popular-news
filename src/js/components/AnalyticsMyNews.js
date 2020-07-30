@@ -1,3 +1,4 @@
+import {saveArticleWord} from "../constants/constants";
 
 class AnalyticsMyNews {
   constructor (mainApi, articleTitle, articleKeyWordsArray) {
@@ -48,15 +49,15 @@ class AnalyticsMyNews {
     const arrayKeyWordsWithCount = sortObj.flat(Infinity);
     const wordArray = arrayKeyWordsWithCount.filter(e => typeof e === 'string');
 
-    if (this.articleKeyWordsArray[1].textContent !== '') {
-      this.articleKeyWordsArray[0].textContent = `${wordArray[0]},`;
-      this.articleKeyWordsArray[1].textContent = `${wordArray[1]}`;
-      this.articleKeyWordsArray[2].textContent = ` и ${wordArray.length - 2} другим`;
+    if (this.articleKeyWordsArray[saveArticleWord.secondWord].textContent !== '') {
+      this.articleKeyWordsArray[saveArticleWord.firstWord].textContent = `${wordArray[saveArticleWord.firstWord]},`;
+      this.articleKeyWordsArray[saveArticleWord.secondWord].textContent = `${wordArray[saveArticleWord.secondWord]}`;
+      this.articleKeyWordsArray[saveArticleWord.thirdWord].textContent = ` и ${wordArray.length - saveArticleWord.thirdWord} другим`;
     }
     else {
-      this.articleKeyWordsArray[0].textContent = `${wordArray[0]}`
-      this.articleKeyWordsArray[1].textContent = ``;
-      this.articleKeyWordsArray[2].textContent = ` и ${wordArray.length - 1} другим`;
+      this.articleKeyWordsArray[saveArticleWord.firstWord].textContent = `${wordArray[saveArticleWord.firstWord]}`
+      this.articleKeyWordsArray[saveArticleWord.secondWord].textContent = ``;
+      this.articleKeyWordsArray[saveArticleWord.thirdWord].textContent = ` и ${wordArray.length - saveArticleWord.secondWord} другим`;
     }
   }
 

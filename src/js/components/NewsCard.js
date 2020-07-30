@@ -1,5 +1,5 @@
 import { setNormalData } from '../utils/setNormalData'
-import { imageUrl } from '../constants/constants';
+import { imageUrl, objCardStatus } from '../constants/constants';
 class NewsCard{
 
   constructor(mainApi) {
@@ -11,7 +11,7 @@ class NewsCard{
     this.searchKeyword = '';
     this.searchKeyword = keyword;
     cardObj.urlToImage === null ? imageUrl : cardObj.urlToImage;
-      if (statusLogin === 0){
+      if (statusLogin === objCardStatus.statusCardUnLogin){
         return `<div class="card">
                       <div class="card__photo">
                           <img src="${this._sanitizeHTMLUpdate(cardObj.urlToImage)}" alt="${(this._sanitizeHTMLUpdate(cardObj.title))}" class="card__icon">
@@ -28,7 +28,7 @@ class NewsCard{
                       </a>
            </div>`;
       }
-    if (statusLogin === 1) {
+    if (statusLogin === objCardStatus.statusCardLogin) {
       return `<div class="card">
                       <div class="card__photo">
                           <img src="${this._sanitizeHTMLUpdate(cardObj.urlToImage)}" alt="${this._sanitizeHTMLUpdate(cardObj.title)}" class="card__icon">
@@ -44,7 +44,7 @@ class NewsCard{
                       </a>
            </div>`
     }
-      if (statusLogin === 2) {
+      if (statusLogin === objCardStatus.statusCardSave) {
        return `<div class="card"  id="${cardObj._id}">
           <div class="card__photo">
             <img src="${this._sanitizeHTMLUpdate(cardObj.image)}" alt="${(this._sanitizeHTMLUpdate(cardObj.title))}" class="card__icon">

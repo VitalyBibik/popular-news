@@ -28,7 +28,6 @@
   }
   renderSecondPage = () => {
     this.mainApi.getUserData().then((data) => {
-      console.log('data', data);
       if (data === undefined){
         return location = './';
       }
