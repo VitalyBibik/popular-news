@@ -60,16 +60,11 @@ class MainApi {
        headers: {
          'Content-Type': 'application/json',
        },
-     })
-       .then(res => {
+     }).then(res => {
          if (res.ok) {
-           return res.json();
+           return res.json()
          }
-         let json = res.json();
-         return json.then(Promise.reject.bind(Promise))
-       })
-       .catch((err) => {
-         throw err;
+         return Promise.reject(`Что то пошло не так ${res.status}`)
        })
    }
 
