@@ -24,7 +24,6 @@ class NewsCardList {
     this.items = [];
     this.items.push(array);
     this.mainApi.getUserData().then((data) => {
-      console.log(data,'Проверка данных');
       if (data !== undefined) {
         this.statusLogin = 1;
         this._showMoreArticles();
