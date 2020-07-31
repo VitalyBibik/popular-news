@@ -28,14 +28,14 @@ class AnalyticsMyNews {
     })
   }
   _getPopularKeyword = () => {
-    let result = {};
+    const result = {};
     this.keywordsArray.forEach(function (a) {
       if (result[a] !== undefined)
         ++result[a];
       else
         result[a] = 1;
     });
-    let sortable = [];
+    const sortable = [];
     for (let popularKeyword in result) {
       sortable.push([popularKeyword, result[popularKeyword]]);
     }

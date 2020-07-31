@@ -21,7 +21,7 @@ class MainApi {
         if (res.ok) {
           return res.json();
         }
-        let json = res.json();
+        const json = res.json();
         return json.then(Promise.reject.bind(Promise))
       })
       .catch((err) => {
@@ -45,7 +45,7 @@ class MainApi {
          if (res.ok) {
            return res.json();
          }
-         let json = res.json();
+         const json = res.json();
          return json.then(Promise.reject.bind(Promise))
        })
        .catch((err) => {
@@ -80,7 +80,7 @@ class MainApi {
          if (res.ok) {
            return res.json();
          }
-         let json = res.json();
+         const json = res.json();
          return json.then(Promise.reject.bind(Promise))
        })
        .catch((err) => {
@@ -108,7 +108,7 @@ class MainApi {
         if (res.ok) {
           return res.json();
         }
-        let json = res.json();
+        const json = res.json();
         return json.then(Promise.reject.bind(Promise))
       })
       .catch((err) => {
@@ -129,7 +129,7 @@ class MainApi {
         if (res.ok) {
           return res.json();
         }
-        let json = res.json();
+        const json = res.json();
         return json.then(Promise.reject.bind(Promise))
       })
       .catch((err) => {
@@ -150,7 +150,7 @@ class MainApi {
         if (res.ok) {
           return res.json();
         }
-        let json = res.json();
+        const json = res.json();
         return json.then(Promise.reject.bind(Promise))
       })
       .catch((err) => {
