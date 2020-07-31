@@ -117,7 +117,6 @@ class MainApi {
   }
 
   removeArticle = (id) => {
-    console.log(id, 'send');
     return fetch(`${this.options.myURL}/articles/${id}`, {
       method: 'DELETE',
       credentials: 'include',
