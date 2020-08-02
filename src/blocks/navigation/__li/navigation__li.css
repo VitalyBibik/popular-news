@@ -1,0 +1,25 @@
+.navigation__li {
+  list-style-type: none;
+  margin-left: 32px;
+}
+
+@media screen and (min-width: 551px) and (max-width: 768px) {
+  .navigation__li {
+    margin-left: 16px;
+  }
+}
+@media screen and ( min-width: 320px ) and (max-width:602px) {
+
+  .navigation__li_mobile {
+    width: 90%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 16px;
+  }
+
+}
+
+
+
+
+
