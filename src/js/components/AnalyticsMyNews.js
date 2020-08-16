@@ -1,3 +1,4 @@
+import {saveArticleWord} from "../constants/constants";
 
 class AnalyticsMyNews {
   constructor (mainApi, articleTitle, articleKeyWordsArray) {
@@ -7,7 +8,7 @@ class AnalyticsMyNews {
     this.countArticle = 0;
     this.keywordsArray = [];
   }
-  _getUserInfo = () => {
+  getUserInfo = () => {
     this.mainApi.getUserData().then((data) => {
       this.articleTitle.textContent = `${data.name}, у вас ${this.countArticle} сохранённых статей`;
     })
@@ -15,26 +16,26 @@ class AnalyticsMyNews {
 
   getSaveKeyword = () => {
     this.mainApi.getArticles().then((data) => {
-      this._getUserInfo();
+      this.getUserInfo();
       if (data !== undefined) {
       this.countArticle = data.length;
       data.forEach((element) => {
        this.keywordsArray.push(element.keyword)
       })
-      this._getUserInfo();
+      this.getUserInfo();
       this._getPopularKeyword();
       }
     })
   }
   _getPopularKeyword = () => {
-    let result = {};
+    const result = {};
     this.keywordsArray.forEach(function (a) {
       if (result[a] !== undefined)
         ++result[a];
       else
         result[a] = 1;
     });
-    let sortable = [];
+    const sortable = [];
     for (let popularKeyword in result) {
       sortable.push([popularKeyword, result[popularKeyword]]);
     }
@@ -48,15 +49,15 @@ class AnalyticsMyNews {
     const arrayKeyWordsWithCount = sortObj.flat(Infinity);
     const wordArray = arrayKeyWordsWithCount.filter(e => typeof e === 'string');
 
-    if (this.articleKeyWordsArray[1].textContent !== '') {
-      this.articleKeyWordsArray[0].textContent = `${wordArray[0]},`;
-      this.articleKeyWordsArray[1].textContent = `${wordArray[1]}`;
-      this.articleKeyWordsArray[2].textContent = ` и ${wordArray.length - 2} другим`;
+    if (this.articleKeyWordsArray[saveArticleWord.secondWord].textContent !== '') {
+      this.articleKeyWordsArray[saveArticleWord.firstWord].textContent = `${wordArray[saveArticleWord.firstWord]},`;
+      this.articleKeyWordsArray[saveArticleWord.secondWord].textContent = `${wordArray[saveArticleWord.secondWord]}`;
+      this.articleKeyWordsArray[saveArticleWord.thirdWord].textContent = ` и ${wordArray.length - saveArticleWord.thirdWord} другим`;
     }
     else {
-      this.articleKeyWordsArray[0].textContent = `${wordArray[0]}`
-      this.articleKeyWordsArray[1].textContent = ``;
-      this.articleKeyWordsArray[2].textContent = ` и ${wordArray.length - 1} другим`;
+      this.articleKeyWordsArray[saveArticleWord.firstWord].textContent = `${wordArray[saveArticleWord.firstWord]}`
+      this.articleKeyWordsArray[saveArticleWord.secondWord].textContent = ``;
+      this.articleKeyWordsArray[saveArticleWord.thirdWord].textContent = ` и ${wordArray.length - saveArticleWord.secondWord} другим`;
     }
   }
 

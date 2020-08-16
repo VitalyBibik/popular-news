@@ -21,7 +21,7 @@ class MainApi {
         if (res.ok) {
           return res.json();
         }
-        let json = res.json();
+        const json = res.json();
         return json.then(Promise.reject.bind(Promise))
       })
       .catch((err) => {
@@ -45,7 +45,7 @@ class MainApi {
          if (res.ok) {
            return res.json();
          }
-         let json = res.json();
+         const json = res.json();
          return json.then(Promise.reject.bind(Promise))
        })
        .catch((err) => {
@@ -60,16 +60,11 @@ class MainApi {
        headers: {
          'Content-Type': 'application/json',
        },
-     })
-       .then(res => {
+     }).then(res => {
          if (res.ok) {
-           return res.json();
+           return res.json()
          }
-         let json = res.json();
-         return json.then(Promise.reject.bind(Promise))
-       })
-       .catch((err) => {
-         throw err;
+         return Promise.reject(`Что то пошло не так ${res.status}`)
        })
    }
 
@@ -85,7 +80,7 @@ class MainApi {
          if (res.ok) {
            return res.json();
          }
-         let json = res.json();
+         const json = res.json();
          return json.then(Promise.reject.bind(Promise))
        })
        .catch((err) => {
@@ -113,7 +108,7 @@ class MainApi {
         if (res.ok) {
           return res.json();
         }
-        let json = res.json();
+        const json = res.json();
         return json.then(Promise.reject.bind(Promise))
       })
       .catch((err) => {
@@ -122,7 +117,6 @@ class MainApi {
   }
 
   removeArticle = (id) => {
-    console.log(id, 'send');
     return fetch(`${this.options.myURL}/articles/${id}`, {
       method: 'DELETE',
       credentials: 'include',
@@ -134,7 +128,7 @@ class MainApi {
         if (res.ok) {
           return res.json();
         }
-        let json = res.json();
+        const json = res.json();
         return json.then(Promise.reject.bind(Promise))
       })
       .catch((err) => {
@@ -155,7 +149,7 @@ class MainApi {
         if (res.ok) {
           return res.json();
         }
-        let json = res.json();
+        const json = res.json();
         return json.then(Promise.reject.bind(Promise))
       })
       .catch((err) => {

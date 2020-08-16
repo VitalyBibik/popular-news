@@ -7,13 +7,13 @@ import { pageSize, newsLang } from "../constants/constants";
    this.options = options;
   }
   getNews (searchWord) {
-    let data = getData();
+    const data = getData();
     return fetch(`${this.options.baseUrl}${searchWord}&from=${data.fromDate}&to=${data.toDate}&language=${newsLang}&sortBy=publishedAt&pageSize=${pageSize}&apiKey=${this.options.headers.authorizationNews}`)
       .then(res => {
         if (res.ok) {
           return res.json();
         }
-        let json = res.json();
+        const json = res.json();
         return json.then(Promise.reject.bind(Promise))
       })
       .catch((err) => {

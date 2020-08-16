@@ -36,6 +36,7 @@
     })
       .catch((e)=> {
         console.log(e);
+        return location = './';
       })
   }
 

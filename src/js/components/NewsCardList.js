@@ -1,3 +1,4 @@
+import {firstIndexArray, nullResult, objCardStatus} from "../constants/constants";
 
 class NewsCardList {
   constructor (newsCard, renderPosition, buttonMore, mainApi) {
@@ -6,7 +7,7 @@ class NewsCardList {
     this.buttonMore = buttonMore;
     this.mainApi = mainApi;
     this.items = [];
-    this.statusLogin = 0;
+    this.statusLogin = objCardStatus.statusCardUnLogin;
     this.keyword = '';
   }
 
@@ -23,15 +24,17 @@ class NewsCardList {
     this._clearListCard();
     this.items = [];
     this.items.push(array);
-    this._showMoreArticles();
     this.mainApi.getUserData().then((data) => {
       if (data !== undefined) {
-        this.statusLogin = 1;
+        this.statusLogin = objCardStatus.statusCardLogin;
         this._showMoreArticles();
       } else {
-        this.statusLogin = 0;
+        this.statusLogin = objCardStatus.statusCardUnLogin
         this._showMoreArticles();
       }
+    }).catch((e) => {
+      console.log(e);
+      this._showMoreArticles();
     })
   }
   initCardListKeyWord = (word) => {
@@ -42,12 +45,12 @@ class NewsCardList {
     _showMoreArticles = () => {
     let currentIndex = 0;
     let currentLimit = 3;
-    if ( this.items['0'].length !== 0) {
+    if ( this.items[firstIndexArray].length !== nullResult) {
       this.buttonMore.classList.remove('search__button_status_disabled');
       currentLimit += currentIndex;
-      for (currentIndex; currentIndex < currentLimit && currentIndex <  this.items[0].length; currentIndex++) {
-        this._addCard(this.items[0][currentIndex]);
-        this.items[0].shift();
+      for (currentIndex; currentIndex < currentLimit && currentIndex <  this.items[firstIndexArray].length; currentIndex++) {
+        this._addCard(this.items[firstIndexArray][currentIndex]);
+        this.items[firstIndexArray].shift();
       }
     } else {
       this.buttonMore.classList.add('search__button_status_disabled');
@@ -65,7 +68,7 @@ class NewsCardList {
   }
   getAllArticle = () => {
     this.mainApi.getArticles().then((data) => {
-      this.statusLogin = 2;
+      this.statusLogin = objCardStatus.statusCardSave;
       data.forEach((element) => {
         this._addCard(element);
       })

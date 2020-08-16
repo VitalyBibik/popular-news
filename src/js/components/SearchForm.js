@@ -1,5 +1,6 @@
+import {nullResult} from "../constants/constants";
 
- class SearchForm {
+class SearchForm {
    constructor(elHeaderForm, goodFindNews, badFindNews, newsApi, cardList, rootResult, buttonShowMore) {
      this.elHeaderForm = elHeaderForm;
      this.goodFindNews = goodFindNews;
@@ -14,6 +15,7 @@
      event.preventDefault();
      const formInput = this.elHeaderForm.querySelector('.search__input');
      if (formInput.value === '') {
+       alert('Поиское поле пустое!')
        return;
      }
      const button = event.currentTarget;
@@ -25,7 +27,7 @@
      this.newsApi.getNews(formInput.value).then((data) => {
        this._removeDisable(formInput, button);
 
-       if (( data === undefined || data.totalResults === 0))  {
+       if (( data === undefined || data.totalResults === nullResult))  {
          this.badFindNews.classList.remove('root__empty_status_disabled');
          this.rootResult.classList.remove('root__result_status_disabled');
          this.buttonShowMore.classList.add('search__button_status_disabled');
