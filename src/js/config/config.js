@@ -1,5 +1,5 @@
 // const newsApiKey = '994e1bb6bcfe481cb84ed7ee5767eb2e';
-const serverUrl = NODE_ENV === 'development' ? 'https://newsapi.org/v2/everything?q=' : 'https://praktikum.tk/news/v2/everything?q=';
+const serverUrl = NODE_ENV === 'development' ? 'https://newsapi.org/v2/everything?q=' : 'https://nomoreparties.co/news/v2/everything?q=';
 const myServer = NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://api.backend-mesto.xyz';
 
 const obj = {
