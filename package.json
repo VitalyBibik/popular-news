@@ -7,7 +7,7 @@
     "build": "cross-env NODE_ENV=production  rimraf dist && webpack --mode production",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --mode development --open --watch",
     "deploy": "cross-env NODE_ENV=production gh-pages -d dist",
-    "serverDeploy": "scp -r ./dist/* vitalik@84.201.175.23:/home/vitalik/news-frontend"
+    "serverDeploy": "scp -r ./dist/* vitalik@10.130.0.255:/home/vitalik/news-frontend"
   },
   "repository": {
     "type": "git",
