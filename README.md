@@ -1,29 +1,9 @@
-
-# "Popular-News"
-## Мой выпускной проект (Я.Практикум)
-### Функционал:
-##### Искать новости;
-##### Сохранять найденные новости;
-##### Авторизация;
-##### Регистрация;
-
-## Запуск:
-##### Для запуска проекта введите следующие команды;
-###### git clone https://github.com/VitalyBibik/popular-news.git
-###### git pull origin develop-html
-###### npm -i
-###### npm run dev - Режим разработки
-###### npm build - Режиб сборки проекта для прода
-
-## Технологии:
-JS (ES5 / ES6);
-API;
-GIT;
-Webpack;
-HTML;
-CSS (flex, grid);
-BEM;
-Node.JS + Express
+# popular-news
 
 
-### Прямая ссылка  https://VitalyBibik.github.io/popular-news/
+###  api.backend-mesto.xyz
+### www.api.backend-mesto.xyz
+#### Для запуска проекта локально используйте следующие команды:
+#### git clone git@github.com:VitalyBibik/popular-news.git
+#### git pull origin develop-backend
+#### npm install

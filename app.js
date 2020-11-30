@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-var cors = require('cors');
+const cors = require('cors');
 const { errors } = require('celebrate');
 const app = express();
 const mongoose = require('mongoose');
@@ -21,7 +21,7 @@ const corsOptions = {
   methods:['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
   optionsSuccessStatus: 204,
-  allowedHeaders:['Content-Type', 'x-requested-with', 'origin', 'accept', 'x-access-token', 'Authorization'],
+  allowedHeaders:['Content-Type', 'origin', 'Authorization'],
   credentials: true
 }
 
