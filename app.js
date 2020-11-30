@@ -2,8 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+var cors = require('cors');
 const { errors } = require('celebrate');
-
 const app = express();
 const mongoose = require('mongoose');
 const helmet = require('helmet');
@@ -16,12 +16,22 @@ const routes = require('./routes/index');
 
 const { limiter } = require('./middleware/limiter');
 
+const corsOptions = {
+  origin:['https://backend-mesto.xyz','http://localhost:8080', 'https://vitalybibik.github.io'],
+  methods:['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+  allowedHeaders:['Content-Type', 'x-requested-with', 'origin', 'accept', 'x-access-token', 'Authorization'],
+  credentials: true
+}
+
 mongoose.connect(DATABASE_URL, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
   useUnifiedTopology: true,
 });
+app.use('*', cors(corsOptions));
 
 app.use(cookieParser());
 app.use(bodyParser.json());

@@ -5,7 +5,7 @@ const User = require('../models/users');
 
 module.exports.createUser = async (req, res, next) => {
   const {
-    name, email, password,
+    email, password, name
   } = req.body;
   try {
     const hash = await bcrypt.hash(password, 10);
@@ -26,12 +26,24 @@ module.exports.login = async (req, res, next) => {
     const userlogin = await User.findUserByCredentials(email, password);
     const token = jwt.sign({ _id: userlogin._id }, JWT_SECRET || 'dev-secret',
       { expiresIn: '7d' });
+
     res.cookie('jwt', token, {
       maxAge: 3600000 * 24 * 7,
       httpOnly: true,
+      credentials: 'include',
     });
     return res.send({ token });
   } catch (err) {
     return next(err);
+  }
+};
+module.exports.logout = async (req, res, next) => {
+  try {
+    res.cookie('jwt', '', {
+      maxAge: 0,
+      httpOnly: true,
+    }).send({ message: 'Вы вышли из системы' });
+  } catch (e) {
+    return next();
   }
 };
