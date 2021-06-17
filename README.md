@@ -1,12 +1,4 @@
-# popular-news
 
-
-###  api.backend-mesto.xyz
-### www.api.backend-mesto.xyz
-#### Для запуска проекта локально используйте следующие команды:
-#### git clone git@github.com:VitalyBibik/popular-news.git
-#### git pull origin develop-backend
-#### npm install
 # News Explorer Frontend
 В рамках курса "Веб-разработка" в Яндекс.Практикуме
 
@@ -51,6 +43,8 @@
    
 а также запросы по несуществующим адресам, отправляя в ответ JSON-объекты.
 
+#### api.backend-mesto.xyz недоступно сейчас
+#### www.api.backend-mesto.xyz недоступно сейчас
 #### Используемые технологии
 - Node.js
 - Express.js
